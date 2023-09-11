@@ -1,4 +1,4 @@
-import 'package:assignment/models/Movie.dart';
+import 'package:assignment/models/movie.dart';
 import 'package:assignment/widgets/movie_details_landscape.dart';
 import 'package:assignment/widgets/movie_details_portrait.dart';
 import 'package:flutter/material.dart';

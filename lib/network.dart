@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:assignment/constants.dart';
 import 'package:http/http.dart' as http;
 
-import 'models/Movie.dart';
+import 'models/movie.dart';
 
 class Network {
 

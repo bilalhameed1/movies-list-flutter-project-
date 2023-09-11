@@ -51,11 +51,11 @@ class MoviesScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width : size.width - 10,
+            width: size.width - 10,
             height: size.height - 200,
             child: Obx(
               () => GridView.builder(
-                //controller: controller.scrollController,
+                controller: controller.scrollController,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: (size.width > 600) ? 6 : 3,
                     childAspectRatio: 150 / 280,

@@ -1,4 +1,4 @@
-import 'package:assignment/screens/MoviesScreen.dart';
+import 'package:assignment/screens/movies_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

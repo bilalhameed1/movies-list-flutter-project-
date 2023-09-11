@@ -1,4 +1,4 @@
-import 'package:assignment/models/Movie.dart';
+import 'package:assignment/models/movie.dart';
 import 'package:assignment/network.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

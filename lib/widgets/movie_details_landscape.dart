@@ -1,5 +1,5 @@
 import 'package:assignment/constants.dart';
-import 'package:assignment/models/Movie.dart';
+import 'package:assignment/models/movie.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsLandscape extends StatelessWidget {
