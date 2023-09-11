@@ -41,8 +41,7 @@ class MoviesScreen extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      controller
-                          .searchMovies(controller.nameSearchController.text);
+                      controller.searchMovies(controller.nameSearchController.text);
                     },
                     icon: const Icon(Icons.search))
               ],
@@ -68,7 +67,8 @@ class MoviesScreen extends StatelessWidget {
                       );
                   },
                 ),
-              )),
+              ),
+          ),
         ],
       ),
     );

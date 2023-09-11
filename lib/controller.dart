@@ -1,4 +1,4 @@
-import 'package:assignment/models/moviesmodel.dart';
+import 'package:assignment/models/Movie.dart';
 import 'package:assignment/network.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,14 +55,4 @@ class Controller extends GetxController {
     }
   }
 }
-
-// void fetchMoreMovies() async {
-//   newLoadedMovies.clear();
-//   newLoadedMovies = await network.getMoreMovies(moviesPage);
-//   featuredMovies.addAll(newLoadedMovies);
-//   movies.addAll(featuredMovies);
-//   moviesPage ++;
-// }
-
-
 

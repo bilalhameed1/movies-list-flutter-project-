@@ -1,5 +1,5 @@
 import 'package:assignment/constants.dart';
-import 'package:assignment/models/moviesmodel.dart';
+import 'package:assignment/models/Movie.dart';
 import 'package:assignment/screens/movie_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +7,10 @@ import 'package:get/get.dart';
 class MoviesGridList extends StatelessWidget {
   const MoviesGridList({super.key, required this.movie});
   final Movie movie;
+
+  final double imageHeight = 200;
+  final double imageWidth = 140;
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +31,15 @@ class MoviesGridList extends StatelessWidget {
     }
     Widget image = Image.network(
       imagePath,
-      height: 200,
-      width: 140,
+      height: imageHeight,
+      width: imageWidth,
     );
 
     if (movie.backdropPath == null && movie.posterPath == null) {
       image = Image.asset(
         noImage,
-        height: 200,
-        width: 140,
+        height: imageHeight,
+        width: imageWidth,
         fit: BoxFit.cover,
       );
     }
@@ -49,8 +53,8 @@ class MoviesGridList extends StatelessWidget {
           Stack(
             children: [
               Container(
-                  height: 200,
-                  width: 140,
+                  height: imageHeight,
+                  width: imageWidth,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10)),
