@@ -11,6 +11,7 @@ class Controller extends GetxController {
   List<Movie> searchedMovies = [];
   List<Movie> newLoadedMovies = [];
   final nameSearchController = TextEditingController();
+  final scrollController = ScrollController();
 
   @override
   void onInit() {
@@ -27,7 +28,6 @@ class Controller extends GetxController {
   void fetchMovies() async {
     searchedMovies.clear();
     movies.clear();
-    //movies = RxList(await network.getMovies());
     if (featuredMovies.isEmpty) {
       featuredMovies = await network.getMovies();
       movies.addAll(featuredMovies);
@@ -38,7 +38,8 @@ class Controller extends GetxController {
 
   void fetchMoreMovies() async {
     moviesPage++;
-    final newLoadedMovies = await network.getMoreMovies(moviesPage);
+    newLoadedMovies.clear();
+    newLoadedMovies = await network.getMoreMovies(moviesPage);
     featuredMovies.addAll(newLoadedMovies);
     movies.addAll(featuredMovies);
   }
@@ -51,8 +52,6 @@ class Controller extends GetxController {
     } else {
       searchedMovies = await network.getSearchMovies(keyword);
       movies.addAll(searchedMovies);
-      //movies = RxList(await network.getSearchMovies(keyword));
     }
   }
 }
-

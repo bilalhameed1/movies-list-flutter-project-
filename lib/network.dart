@@ -10,11 +10,10 @@ class Network {
   Future<List<Movie>> getMovies() async {
     List<Movie> movies = List.empty(growable: true);
     final url = Uri.parse(
-        '${apiUrl}movie/now_playing?language=en-US&page=1&api_key=$apiKey');
+        '$apiUrl$apiKey&page=1');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       final Map<String, dynamic> listData = json.decode(response.body);
-      // pages = listData["total_pages"];
       final results = listData["results"];
       for (final item in results) {
         movies.add(Movie(item));
@@ -26,7 +25,7 @@ class Network {
   Future<List<Movie>> getMoreMovies(int moviePage) async {
     List<Movie> movies = List.empty(growable: true);
     final url = Uri.parse(
-        '${apiUrl}movie/now_playing?language=en-US&page=$moviePage&api_key=$apiKey');
+        '$apiUrl$apiKey&page=$moviePage');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       final Map<String, dynamic> listData = json.decode(response.body);
@@ -41,7 +40,7 @@ class Network {
   Future<List<Movie>> getSearchMovies(String keyword) async {
     List<Movie> movies = List.empty(growable: true);
     final url = Uri.parse(
-        '${apiUrl}search/movie?query=$keyword&include_adult=false&language=en-US&page=1&api_key=$apiKey');
+        '$apiSearchUrl$apiKey&query=$keyword');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       final Map<String, dynamic> listData = json.decode(response.body);

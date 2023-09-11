@@ -22,6 +22,7 @@ class MoviesScreen extends StatelessWidget {
               onPressed: () {
                 controller.fetchMovies();
                 controller.nameSearchController.text = "";
+                controller.scrollController.jumpTo(0.0);
               },
               child: const Text("Home"))
         ],
@@ -41,33 +42,36 @@ class MoviesScreen extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      controller.searchMovies(controller.nameSearchController.text);
+                      controller
+                          .searchMovies(controller.nameSearchController.text);
+                      controller.scrollController.jumpTo(0.0);
                     },
                     icon: const Icon(Icons.search))
               ],
             ),
           ),
           SizedBox(
-              width: size.width,
-              height: size.height - 200,
-              child: Obx(
-                () => GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: (size.width > 600) ? 6 : 3,
-                      childAspectRatio: 150 / 280,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10),
-                  itemCount: controller.movies.length,
-                  itemBuilder: (context, index) {
-                    if (index + 5 == controller.movies.length) {
-                      controller.fetchMoreMovies();
-                    }
-                      return MoviesGridList(
-                        movie: controller.movies[index],
-                      );
-                  },
-                ),
+            width : size.width - 10,
+            height: size.height - 200,
+            child: Obx(
+              () => GridView.builder(
+                //controller: controller.scrollController,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: (size.width > 600) ? 6 : 3,
+                    childAspectRatio: 150 / 280,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10),
+                itemCount: controller.movies.length,
+                itemBuilder: (context, index) {
+                  if (index + 5 == controller.movies.length) {
+                    controller.fetchMoreMovies();
+                  }
+                  return MoviesGridList(
+                    movie: controller.movies[index],
+                  );
+                },
               ),
+            ),
           ),
         ],
       ),

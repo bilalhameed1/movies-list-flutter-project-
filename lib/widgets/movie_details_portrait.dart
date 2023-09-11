@@ -4,23 +4,22 @@ import 'package:flutter/material.dart';
 
 class MovieDetailsPortrait extends StatelessWidget {
   const MovieDetailsPortrait({super.key, required this.movie});
-
   final Movie movie;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    String imagePath = "$imagePathUrl${movie.posterPath}";
-    if (movie.backdropPath != null) {
-      imagePath = "$imagePathUrl${movie.backdropPath}";
+    String imagePath = "$imagePathUrl${movie.backdropPath}";
+    if (movie.backdropPath == null) {
+      imagePath = "$imagePathUrl${movie.posterPath}";
     }
+
     Widget portraitImage = Image.network(
       imagePath,
       width: double.infinity,
       height: size.height / 2.4,
       fit: BoxFit.cover,
     );
-
     if (movie.backdropPath == null && movie.posterPath == null) {
       portraitImage = Image.asset(
         noImage,
@@ -31,7 +30,6 @@ class MovieDetailsPortrait extends StatelessWidget {
     }
 
     return Column(
-      // will render when app is in landscape mode
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         portraitImage,
@@ -55,7 +53,7 @@ class MovieDetailsPortrait extends StatelessWidget {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: Text(
             "Overview",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
@@ -89,7 +87,6 @@ class MovieDetailsPortrait extends StatelessWidget {
                       style: const TextStyle(fontSize: 18))
                 ],
               ),
-              //Text(movie.voteAverage.toString()),
             ],
           ),
         )

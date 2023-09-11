@@ -14,6 +14,7 @@ class MovieDetailsLandscape extends StatelessWidget {
     if (movie.backdropPath != null) {
       imagePath = "$imagePathUrl${movie.backdropPath}";
     }
+
     Widget landscapeImage = Image.network(
       imagePath,
       width: size.width / 3,
@@ -30,14 +31,13 @@ class MovieDetailsLandscape extends StatelessWidget {
     }
 
     return Row(
-      // will render when app is in landscape mode
       children: [
         landscapeImage,
         const SizedBox(
           width: 20,
         ),
         SizedBox(
-          width: size.width / 2,
+          width: size.width / 1.8,
           child: Column(
             children: [
               Padding(
